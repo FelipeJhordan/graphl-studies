@@ -7,7 +7,7 @@ function ListWrapper() {
     <>
       <Box alignSelf={"end"} marginRight={"25%"}>
         <Button
-          variant="outlined"
+          variant="contained"
           color="secondary"
           size="large"
           onClick={() => navigate("/todo")}

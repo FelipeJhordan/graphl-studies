@@ -1,3 +1,4 @@
+import { useQuery } from "@apollo/client";
 import {
   Paper,
   Table,
@@ -18,15 +19,16 @@ const columns = getColumnsByModel();
 export function TodoTable() {
   const api = new Api();
   const [todoList, setTodoList] = useState<TodoModel[]>([]);
-
-  const populateTodoModel = async () => {
-    const todos = await api.getTasks();
-    setTodoList(todos);
-  };
+  const { loading, error, data, refetch } = useQuery( api.getTasksQuery(), {
+    
+  })  
 
   useEffect(() => {
-    populateTodoModel();
-  }, []);
+    if(data){
+      console.log(data)
+      setTodoList(data.getTasks)
+    }
+  }, [data, error]);
 
   return (
     <TableContainer component={Paper}>
@@ -34,7 +36,6 @@ export function TodoTable() {
         <TableHead>
           <TableRow>
             {columns.map((column) => {
-              console.log(column);
               if (column === "Action") {
                 return (
                   <TableCell align="center" width={"1em"}>
@@ -47,7 +48,7 @@ export function TodoTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {todoList.map((todo) => (
+          {todoList.length ? todoList?.map((todo) => (
             <TableRow
               key={todo.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -59,10 +60,12 @@ export function TodoTable() {
               <TableCell align="right">{todo.description}</TableCell>
               <TableCell align="right">{todo.date.toString()}</TableCell>
               <TableCell align="right">
-                <ActionList id={todo.id || "0"} />
+                <ActionList id={todo.id || "0"} handleParentState={refetch}/>
               </TableCell>
             </TableRow>
-          ))}
+          )): <TableRow>
+              Nada encontrado
+            </TableRow>}
         </TableBody>
       </Table>
     </TableContainer>

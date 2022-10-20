@@ -1,4 +1,4 @@
-import { Add, PlusOneOutlined } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ function TodoListPage() {
           variant="contained"
           color="secondary"
           size="large"
-          onClick={() => navigate("task/new")}
+          onClick={() => navigate("task/new", {replace: true})}
           style={{
             position: "absolute",
             top: "0",

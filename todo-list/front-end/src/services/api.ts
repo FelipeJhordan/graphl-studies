@@ -70,6 +70,20 @@ export class Api {
           }
         `
     }
+
+    updateTask() {
+        return gql
+        `
+        mutation updateTask($id: ID!, $title: String!, $description: String!){
+            updateTask(id: $id, title: $title, description: $description) {
+              id
+              title
+              description
+              date
+           } 
+          }
+        `
+    }
 }
 
 const defaultOptions: DefaultOptions = {

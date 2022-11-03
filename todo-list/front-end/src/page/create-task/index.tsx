@@ -17,7 +17,6 @@ export function CreateTaskPage() {
 
 
   const createTask = () => {
-    console.log(myForm.values)
     cb({variables:{ title: myForm.values.title, description: myForm.values.description}})
     navigate("../..", {relative: "path"})
 

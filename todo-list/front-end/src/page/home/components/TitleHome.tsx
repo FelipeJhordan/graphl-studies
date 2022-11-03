@@ -22,6 +22,7 @@ function TitleHome() {
         flexDirection={"column"}
         alignItems={"center"}
         paddingRight={"4rem"}
+        width={"60%"}
       >
         <Typography variant="h1" color={"#F1FAEE"} fontWeight={"300"}>
           HandTasks

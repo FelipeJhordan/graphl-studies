@@ -12,8 +12,15 @@ function HomePage() {
         justifyContent={"space-between"}
         minHeight={"100%"}
       >
+        <Box 
+        display={"flex"}
+        flexDirection={"row"}
+        alignItems={"center"}
+        minHeight={"55vh"}
+        >
         <TitleHome />
         <ListWrapper />
+        </Box>
         <FooterHome />
       </Box>
     </>

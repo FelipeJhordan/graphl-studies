@@ -34,7 +34,7 @@ export function ActionList({ id, handleParentState }: ActionListProps) {
   return (
     <>
       <Box display={"flex"}>
-        <Button disabled onClick={() => navigateToForm("edit")}>
+        <Button  onClick={() => navigateToForm("edit")}>
           <Edit />
         </Button>
         <Button onClick={() => navigateToForm("view")}>

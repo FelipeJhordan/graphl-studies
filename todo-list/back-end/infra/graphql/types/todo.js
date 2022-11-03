@@ -11,9 +11,10 @@ export const typeDefs = `
         getTask(id: ID!): Tasks!
     }
 
+
     type Mutation {
         deleteTask(id: ID!): Tasks
         createTask(title: String!, description: String!): Tasks!
+        updateTask(id: ID!, title: String!, description: String!): Tasks!
     }
-`
-
+`;
